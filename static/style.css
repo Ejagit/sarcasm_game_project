@@ -1,0 +1,184 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+    background-color: #f0f8ff;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Heading Style */
+h1 {
+    color: #ff4500;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #ffa500;
+    font-family: 'Press Start 2P', cursive; /* Retro game font */
+}
+
+/* Paragraph Style */
+p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #4682b4;
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+}
+
+/* Audio Controls Style */
+.audio-controls {
+    margin: 20px 0;
+}
+
+.audio-controls p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-family: 'Press Start 2P', cursive; /* Retro game font */
+}
+
+.audio-controls button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: 2px solid #388E3C; /* Darker green border */
+    padding: 8px 16px; /* Reduced padding for smaller button */
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Smaller shadow for 3D effect */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    font-family: 'Press Start 2P', cursive; /* Retro game font */
+}
+
+.audio-controls button:hover {
+    background-color: #45A049; /* Lighter green on hover */
+    transform: translateY(-2px); /* Lift button effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4); /* Enhanced shadow on hover */
+}
+
+.audio-controls button:active {
+    background-color: #388E3C; /* Even darker green on click */
+    transform: translateY(1px); /* Button depress effect */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Reduced shadow on click */
+}
+
+#database-table, #leaderboard-table {
+    width: 80%;
+    margin: 20px auto; /* Centers the table horizontally */
+    border-collapse: collapse;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+    font-size: 1.2em;
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+}
+
+
+#database-table {
+    background-color: #fff0f5;
+}
+
+#database-table th, #database-table td {
+    border: 2px solid #ff69b4;
+    padding: 10px;
+    text-align: center;
+}
+
+#database-table th {
+    background-color: #ff69b4;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#database-table tr:nth-child(even) td {
+    background-color: #ffe4e1;
+}
+
+#leaderboard-table {
+    background-color: #e6f2ff;
+}
+
+#leaderboard-table th, #leaderboard-table td {
+    border: 2px solid #4682b4;
+    padding: 10px;
+    text-align: center;
+}
+
+#leaderboard-table th {
+    background-color: #4682b4;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#leaderboard-table tr:nth-child(even) td {
+    background-color: #cce6ff;
+}
+
+/* Form Style */
+form {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    background-color: #fffacd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    text-align: left;
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+}
+
+/* Form Label Style */
+form label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+}
+
+/* Form Input Style */
+form input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ff69b4;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+}
+
+/* Form Button Style */
+form button {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Roboto Mono', monospace; /* Modern pixel-art vibe */
+}
+
+form button:hover {
+    background-color: #228b22;
+    transform: translateY(-2px);
+}
+
+form button:active {
+    background-color: #006400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    table, form {
+        width: 100%;
+    }
+
+    form input[type="text"] {
+        width: calc(100% - 22px);
+    }
+}

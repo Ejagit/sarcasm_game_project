@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Sarcasm Database</title>
+</head>
+<body>
+    <h1>WELCOME TO SARCASM GAME</h1>
+    <p>{{ message }}</p>
+
+    <!-- Audio Element with autoplay and loop -->
+    <audio id="background-audio" autoplay loop>
+        <source src="{{ url_for('static', filename='fbm.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Kontrol Audio -->
+    <div class="audio-controls">
+        <p class="audio-description">Control the background music:</p>
+        <button id="toggle-button">Pause</button>
+    </div>
+
+    <h2>TYPE YOUR NAME AND SARCASM SENTENCE HERE</h2>
+    <form action="{{ url_for('index') }}" method="POST">
+        <label for="nickname">INPUT YOUR NICKNAME:</label>
+        <input type="text" id="nickname" name="nickname" required>
+        <label for="message">GIVE YOUR BEST SARCASM:</label>
+        <input type="text" id="message" name="message" required>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+{% if player_position and total_players %}
+    <p>Your current position in the leaderboard: {{ player_position }} out of {{ total_players }} players.</p>
+{% endif %}
+
+<h2>TOP 10 LEADERBOARD</h2>
+<table id="leaderboard-table">
+    <tr>
+        <th>RANK</th>
+        <th>nickname</th>
+        <th>message</th>
+        <th>sarcasm</th>
+        <th>score</th>
+    </tr>
+    {% for row in leaderboard_results %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+    </tr>
+    {% endfor %}
+
+    {% if player_info and player_position > 10 %}
+    <tr>
+        <td colspan="5">...................................</td>
+    </tr>
+    <tr>
+        <td>{{ player_position }}</td>
+        <td>{{ player_info[0] }}</td>
+        <td>{{ player_info[1] }}</td>
+        <td>{{ player_info[2] }}</td>
+        <td>{{ player_info[3] }}</td>
+    </tr>
+    {% endif %}
+</table>
+
+    <h2>DATABASE</h2>
+    <table id="database-table">
+        <tr>
+            <th>nickname</th>
+            <th>message</th>
+            <th>sarcasm</th>
+            <th>score</th>
+        </tr>
+        {% for row in results %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+    const audio = document.getElementById('background-audio');
+    const toggleButton = document.getElementById('toggle-button');
+
+    // Cek apakah ada posisi terakhir yang tersimpan
+    if (localStorage.getItem('audioPosition')) {
+        audio.currentTime = localStorage.getItem('audioPosition');
+        audio.play();
+    }
+
+    // Simpan posisi audio saat halaman ditutup atau di-reload
+    window.addEventListener('beforeunload', () => {
+        localStorage.setItem('audioPosition', audio.currentTime);
+    });
+
+    // Toggle Play/Pause
+    toggleButton.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            toggleButton.textContent = 'Pause';
+        } else {
+            audio.pause();
+            toggleButton.textContent = 'Play';
+        }
+    });
+    </script>
+
+</body>
+</html>
